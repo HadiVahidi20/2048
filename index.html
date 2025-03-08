@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NumberMerge2048 - Merge Tiles to Reach 2048!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #8F7A66;
+            --secondary-color: #BBADA0;
+            --background-color: #FAF8EF;
+            --text-color: #776E65;
+            --accent-color: #EDC22E;
+            --tile-color-2: #EEE4DA;
+            --tile-color-4: #EDE0C8;
+            --tile-color-8: #F2B179;
+            --tile-color-16: #F59563;
+            --tile-color-32: #F67C5F;
+            --tile-color-64: #F65E3B;
+            --tile-color-128: #EDCF72;
+            --tile-color-256: #EDCC61;
+            --tile-color-512: #EDC850;
+            --tile-color-1024: #EDC53F;
+            --tile-color-2048: #EDC22E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .logo-tile {
+            background-color: var(--accent-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 8rem 2rem 5rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-button {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .cta-button i {
+            margin-right: 8px;
+        }
+
+        .cta-button:hover {
+            background-color: #d9b52a;
+        }
+
+        .game-preview {
+            margin: 3rem auto 0;
+            max-width: 300px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            padding: 10px;
+            background-color: var(--secondary-color);
+            border-radius: 6px;
+        }
+
+        .game-tile {
+            width: 65px;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .tile-2 { background-color: var(--tile-color-2); }
+        .tile-4 { background-color: var(--tile-color-4); }
+        .tile-8 { 
+            background-color: var(--tile-color-8); 
+            color: white;
+        }
+        .tile-16 { 
+            background-color: var(--tile-color-16); 
+            color: white;
+        }
+        .tile-32 { 
+            background-color: var(--tile-color-32); 
+            color: white;
+        }
+        .tile-64 { 
+            background-color: var(--tile-color-64); 
+            color: white;
+        }
+        .tile-128 { 
+            background-color: var(--tile-color-128); 
+            color: white;
+            font-size: 1.3rem;
+        }
+        .tile-0 { background-color: rgba(238, 228, 218, 0.35); }
+
+        .features {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .powerups {
+            background-color: var(--secondary-color);
+            padding: 5rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .powerups-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .powerups-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .powerup-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            color: var(--text-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .powerup-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+        }
+
+        .download {
+            padding: 5rem 2rem;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .download p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .privacy {
+            background-color: #f5f5f5;
+            padding: 5rem 2rem;
+        }
+
+        .privacy-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .privacy h2 {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .privacy h3 {
+            margin: 1.5rem 0 1rem;
+            color: var(--primary-color);
+        }
+
+        .privacy p {
+            margin-bottom: 1rem;
+        }
+
+        .privacy ul {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem 0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .game-preview {
+                max-width: 260px;
+            }
+
+            .game-tile {
+                width: 55px;
+                height: 55px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-tile">2048</div>
+                <span>NumberMerge2048</span>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#powerups">Power-ups</a></li>
+                    <li><a href="#download">Download</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>NumberMerge2048</h1>
+            <p>Merge tiles, reach 2048, and challenge your strategic thinking in this addictive puzzle game with exciting power-ups and daily challenges!</p>
+            <a href="#download" class="cta-button">
+                <i class="fab fa-google-play"></i>
+                Download Now
+            </a>
+            <div class="game-preview">
+                <div class="game-tile tile-2">2</div>
+                <div class="game-tile tile-4">4</div>
+                <div class="game-tile tile-0"></div>
+                <div class="game-tile tile-0"></div>
+                <div class="game-tile tile-0"></div>
+                <div class="game-tile tile-8">8</div>
+                <div class="game-tile tile-0"></div>
+                <div class="game-tile tile-0"></div>
+                <div class="game-tile tile-0"></div>
+                <div class="game-tile tile-16">16</div>
+                <div class="game-tile tile-32">32</div>
+                <div class="game-tile tile-0"></div>
+                <div class="game-tile tile-0"></div>
+                <div class="game-tile tile-128">128</div>
+                <div class="game-tile tile-64">64</div>
+                <div class="game-tile tile-0"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <h2 class="section-title">Game Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <h3>Multiple Board Sizes</h3>
+                <p>Choose from 4×4, 5×5, or 6×6 grid sizes to match your skill level and strategy preferences.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3>Leaderboards</h3>
+                <p>Compete with players worldwide and track your progress with Google Play Games integration.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h3>Daily Challenges</h3>
+                <p>Test your skills with new challenges every day across four difficulty levels from beginner to expert.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-coins"></i>
+                </div>
+                <h3>Reward System</h3>
+                <p>Earn coins as you play to unlock power-ups and special features to enhance your gameplay.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="powerups" id="powerups">
+        <div class="powerups-content">
+            <h2 class="section-title" style="color: white;">Special Power-Ups</h2>
+            <div class="powerups-grid">
+                <div class="powerup-card">
+                    <div class="powerup-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>Swap</h3>
+                    <p>Switch the positions of any two tiles on the board to create strategic combinations.</p>
+                </div>
+                <div class="powerup-card">
+                    <div class="powerup-icon">
+                        <i class="fas fa-undo"></i>
+                    </div>
+                    <h3>Undo</h3>
+                    <p>Made a mistake? No problem! Reverse your last move and try a different strategy.</p>
+                </div>
+                <div class="powerup-card">
+                    <div class="powerup-icon">
+                        <i class="fas fa-bomb"></i>
+                    </div>
+                    <h3>Bomb</h3>
+                    <p>Remove any tile from the board to create space or eliminate unwanted numbers.</p>
+                </div>
+                <div class="powerup-card">
+                    <div class="powerup-icon">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                    <h3>Freeze</h3>
+                    <p>Prevent a tile from merging, allowing you to preserve high-value tiles for later moves.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="download" id="download">
+        <h2 class="section-title">Download NumberMerge2048</h2>
+        <p>Challenge yourself and join thousands of players already enjoying NumberMerge2048! Available now on Google Play Store for free.</p>
+        <a href="https://play.google.com/store/apps/details?id=com.hadify.NumberMerge2048" class="cta-button">
+            <i class="fab fa-google-play"></i>
+            Download Now
+        </a>
+    </section>
+
+    <section class="privacy" id="privacy">
+        <div class="privacy-content">
+            <h2 class="section-title">Privacy Policy</h2>
+            
+            <p>This Privacy Policy explains how HADIFY Studio ("we", "us", or "our") collects, uses, and shares information about you when you use our mobile application NumberMerge2048 ("the Game").</p>
+            
+            <h3>Information We Collect</h3>
+            <p>We collect the following types of information:</p>
+            <ul>
+                <li><strong>Personal Information:</strong> When you connect to Google Play Games, we may receive your Google profile information such as your name and profile picture.</li>
+                <li><strong>Game Data:</strong> We collect data related to your gameplay, including scores, progress, and in-game purchases.</li>
+                <li><strong>Device Information:</strong> We collect information about your device, including model, operating system, unique device identifiers, and mobile network information.</li>
+                <li><strong>Usage Data:</strong> We collect information about how you interact with the Game, including game session duration, features used, and actions taken.</li>
+            </ul>
+            
+            <h3>How We Use Your Information</h3>
+            <p>We use the information we collect to:</p>
+            <ul>
+                <li>Operate and improve the Game</li>
+                <li>Save your game progress</li>
+                <li>Provide leaderboard functionality</li>
+                <li>Process in-app purchases</li>
+                <li>Show personalized advertisements</li>
+                <li>Analyze usage patterns to improve user experience</li>
+                <li>Prevent fraud and ensure security</li>
+            </ul>
+            
+            <h3>Third-Party Services</h3>
+            <p>The Game uses the following third-party services that may collect information:</p>
+            <ul>
+                <li><strong>Google Play Games Services:</strong> For sign-in, leaderboards, and game saves</li>
+                <li><strong>Google AdMob:</strong> For serving advertisements</li>
+                <li><strong>Firebase Analytics:</strong> For usage analytics</li>
+                <li><strong>Firebase Crashlytics:</strong> For crash reporting</li>
+            </ul>
+            <p>Each of these services is governed by its own privacy policy, which we encourage you to review.</p>
+            
+            <h3>Advertisements</h3>
+            <p>The Game contains advertisements provided by Google AdMob. AdMob may use device identifiers and location data to serve personalized ads. You can opt out of personalized advertising by adjusting your device settings or purchasing the ad-free version of the Game.</p>
+            
+            <h3>Data Retention</h3>
+            <p>We retain your personal information for as long as necessary to provide the Game and fulfill the purposes outlined in this Privacy Policy. If you delete the Game, certain game data may remain in our systems for analytical purposes and to prevent fraud.</p>
+            
+            <h3>Your Rights</h3>
+            <p>Depending on your location, you may have certain rights regarding your personal information, such as:</p>
+            <ul>
+                <li>Accessing, correcting, or deleting your personal information</li>
+                <li>Withdrawing consent where processing is based on consent</li>
+                <li>Requesting restriction of processing</li>
+                <li>Data portability</li>
+            </ul>
+            <p>To exercise these rights, please contact us using the information provided below.</p>
+            
+            <h3>Children's Privacy</h3>
+            <p>The Game is not intended for children under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe we have collected information from your child, please contact us.</p>
+            
+            <h3>Changes to This Privacy Policy</h3>
+            <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.</p>
+            
+            <h3>Contact Us</h3>
+            <p>If you have any questions about this Privacy Policy, please contact us at:</p>
+            <p>Email: privacy@hadifystudio.com</p>
+            
+            <p><strong>Last Updated:</strong> March 8, 2025</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 HADIFY Studio. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
