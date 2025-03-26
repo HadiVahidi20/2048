@@ -20,7 +20,7 @@
         <div class="container">
             <div class="logo">
                 <div class="logo-box">2048</div>
-                <span class="logo-text">NumberMerge2048</span>
+                <span class="logo-text">NumberMerge</span>
             </div>
             <div class="menu-toggle">
                 <div class="hamburger"></div>
@@ -29,7 +29,7 @@
                 <li><a href="#features">Features</a></li>
                 <li><a href="#how-to-play">How to Play</a></li>
                 <li><a href="#daily-challenges">Daily Challenges</a></li>
-                <li><a href="#privacy-policy">Privacy Policy</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
             </ul>
         </div>
     </nav>
@@ -40,10 +40,6 @@
             <div class="hero-content">
                 <h1 class="animated-title">NumberMerge2048</h1>
                 <p class="hero-subtitle">Merge tiles, unlock power-ups, and challenge yourself daily!</p>
-                <div class="coin-display">
-                    <span class="coin-icon">💰</span>
-                    <span class="coin-count">250</span>
-                </div>
                 <div class="cta-buttons">
                     <a href="#" class="btn btn-primary btn-download">
                         <i class="fab fa-google-play"></i>
@@ -54,40 +50,66 @@
             <div class="hero-image">
                 <div class="phone-mockup">
                     <div class="phone-screen">
+                        <!-- Game Header -->
                         <div class="game-header">
-                            <div class="score-box">
-                                <div class="score-label">SCORE</div>
-                                <div class="score-value">0</div>
+                            <div class="game-header-left">
+                                <div class="game-icon-button">🏠</div>
+                                <div class="game-icon-button">☰</div>
                             </div>
-                            <div class="score-box">
-                                <div class="score-label">BEST</div>
-                                <div class="score-value">2048</div>
+                            <div class="game-header-middle">
+                                <div class="score-display">
+                                    <div class="score-text">Score: <span class="score-value">0</span></div>
+                                    <div class="best-score-text">Best: <span class="best-score-value">2048</span></div>
+                                </div>
+                            </div>
+                            <div class="game-header-right">
+                                <div class="coins-display">
+                                    <span class="coin-icon">💰</span>
+                                    <span class="coin-count">250</span>
+                                </div>
                             </div>
                         </div>
+                        
+                        <!-- Power-up instruction -->
+                        <div class="power-up-instruction" id="powerUpInstruction">
+                            Select two tiles to swap their positions
+                        </div>
+                        
+                        <!-- Game Board -->
                         <div class="game-board">
                             <!-- Game board tiles added via JavaScript -->
                         </div>
+                        
+                        <!-- Power-ups Container -->
                         <div class="powerups-container">
-                            <div class="powerup" data-type="swap">
-                                <div class="powerup-icon">🔄</div>
-                                <div class="powerup-count">3</div>
-                                <div class="powerup-label">Swap</div>
+                            <div class="power-up-button" data-type="swap">
+                                <div class="power-up-icon">🔄</div>
+                                <div class="power-up-count">3</div>
+                                <div class="power-up-label">Swap</div>
                             </div>
-                            <div class="powerup" data-type="undo">
-                                <div class="powerup-icon">⏪</div>
-                                <div class="powerup-count">2</div>
-                                <div class="powerup-label">Undo</div>
+                            <div class="power-up-button" data-type="undo">
+                                <div class="power-up-icon">⏪</div>
+                                <div class="power-up-count">2</div>
+                                <div class="power-up-label">Undo</div>
                             </div>
-                            <div class="powerup" data-type="bomb">
-                                <div class="powerup-icon">💣</div>
-                                <div class="powerup-count">1</div>
-                                <div class="powerup-label">Bomb</div>
+                            <div class="power-up-button" data-type="bomb">
+                                <div class="power-up-icon">💣</div>
+                                <div class="power-up-count">1</div>
+                                <div class="power-up-label">Bomb</div>
                             </div>
-                            <div class="powerup" data-type="freeze">
-                                <div class="powerup-icon">❄️</div>
-                                <div class="powerup-count">1</div>
-                                <div class="powerup-label">Freeze</div>
+                            <div class="power-up-button" data-type="freeze">
+                                <div class="power-up-icon">❄️</div>
+                                <div class="power-up-count">1</div>
+                                <div class="power-up-label">Freeze</div>
                             </div>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="action-buttons">
+                            <button class="action-button">
+                                <span class="action-icon">🔄</span>
+                                <span class="action-text">New Game</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -282,89 +304,19 @@
         </div>
     </section>
 
-    <!-- Privacy Policy Section -->
-    <section class="privacy-policy" id="privacy-policy">
-        <div class="container">
-            <h2 class="section-title">Privacy Policy</h2>
-            <div class="policy-container">
-                <div class="policy-section">
-                    <h3>Introduction</h3>
-                    <p>This Privacy Policy explains how we collect, use, and share information when you use our NumberMerge2048 mobile application ("App").</p>
-                    <p>We respect your privacy and are committed to protecting your personal information. By using the App, you consent to this Privacy Policy.</p>
-                </div>
-
-                <div class="policy-section">
-                    <h3>Information We Collect</h3>
-                    <p>We collect minimal information necessary to provide you with the App:</p>
-                    <ul>
-                        <li><strong>Game Progress Information:</strong> We store your game progress, scores, and settings locally on your device to enable the "continue" functionality.</li>
-                        <li><strong>Device Information:</strong> Basic information about your device (such as device type, operating system version) may be collected for app functionality and debugging purposes.</li>
-                        <li><strong>Ad-related Data:</strong> Our advertising partners may collect certain information to serve relevant ads. Please refer to their privacy policies for more details.</li>
-                    </ul>
-                </div>
-
-                <div class="policy-section">
-                    <h3>Advertising</h3>
-                    <p>The App is ad-supported. We use the following ad providers:</p>
-                    <ul>
-                        <li><strong>Google AdMob:</strong> <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a></li>
-                        <li><strong>Unity Ads:</strong> <a href="https://unity.com/legal/privacy-policy" target="_blank">Privacy Policy</a></li>
-                    </ul>
-                    <p>These services may collect information used to serve personalized ads. This may include identifiers for your device and your interactions with ads.</p>
-                </div>
-
-                <div class="policy-section">
-                    <h3>Data Storage and Security</h3>
-                    <p>Your game data is primarily stored locally on your device. We implement reasonable security measures to protect any information we collect.</p>
-                </div>
-
-                <div class="policy-section">
-                    <h3>Children's Privacy</h3>
-                    <p>Our App is not directed to children under the age of 13, and we do not knowingly collect personal information from children under 13.</p>
-                </div>
-
-                <div class="policy-section">
-                    <h3>Your Rights</h3>
-                    <p>Depending on your location, you may have rights regarding your personal information, including:</p>
-                    <ul>
-                        <li>Access to your data</li>
-                        <li>Correction of inaccurate data</li>
-                        <li>Deletion of your data</li>
-                        <li>Restriction of processing</li>
-                        <li>Data portability</li>
-                    </ul>
-                    <p>To exercise these rights, please contact us using the information provided below.</p>
-                </div>
-
-                <div class="policy-section">
-                    <h3>Changes to This Privacy Policy</h3>
-                    <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.</p>
-                </div>
-
-                <div class="policy-section">
-                    <h3>Contact Us</h3>
-                    <p>If you have any questions about this Privacy Policy, please contact us at:</p>
-                    <p>Email: support@numbermerge2048.com</p>
-                </div>
-
-                <p class="policy-last-updated">Last Updated: March 26, 2025</p>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="logo-placeholder.png" alt="NumberMerge2048 Logo" class="logo-img-small">
+                    <div class="logo-box-small">2048</div>
                     <span>NumberMerge2048</span>
                 </div>
                 <div class="footer-links">
                     <a href="#home">Home</a>
                     <a href="#features">Features</a>
                     <a href="#how-to-play">How to Play</a>
-                    <a href="#privacy-policy">Privacy Policy</a>
+                    <a href="privacy.html">Privacy Policy</a>
                 </div>
                 <div class="copyright">
                     <p>&copy; 2025 HADIFY Studio. All rights reserved.</p>
@@ -373,6 +325,11 @@
             </div>
         </div>
     </footer>
+
+    <!-- Game related effects -->
+    <div id="gameEffectsContainer" class="game-effects-container">
+        <!-- This will hold animations like score increases -->
+    </div>
 
     <script src="script.js"></script>
 </body>
