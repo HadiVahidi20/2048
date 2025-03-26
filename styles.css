@@ -381,6 +381,7 @@ img {
     background-clip: text;
     color: transparent;
     animation: titleGradient 5s infinite alternate;
+   index:10;
 }
 
 @keyframes titleGradient {
