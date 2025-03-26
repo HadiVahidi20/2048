@@ -6,36 +6,37 @@
     <title>Privacy Policy - NumberMerge2048</title>
     <meta name="description" content="Privacy Policy for the NumberMerge2048 mobile game application.">
     
-    <!-- Favicon placeholder - replace with actual favicon -->
-    <link rel="icon" type="image/png" href="img/favicon.png">
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico">
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="styles.css">
     
-    <!-- Font import -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="privacy-page">
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <span class="logo-text">2048</span>
-                <span class="logo-subtext">NumberMerge</span>
+                <div class="logo-box">2048</div>
+                <span class="logo-text">NumberMerge</span>
             </div>
-            <div class="nav-links">
-                <a href="index.html#features">Features</a>
-                <a href="index.html#how-to-play">How to Play</a>
-                <a href="privacy.html" class="active">Privacy Policy</a>
-                <a href="index.html#contact">Contact</a>
+            <div class="menu-toggle">
+                <div class="hamburger"></div>
             </div>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#how-to-play">How to Play</a></li>
+                <li><a href="index.html#daily-challenges">Daily Challenges</a></li>
+                <li><a href="privacy.html" class="active">Privacy Policy</a></li>
+            </ul>
         </div>
     </nav>
 
@@ -43,7 +44,7 @@
     <section class="privacy-content">
         <div class="container">
             <h1>Privacy Policy</h1>
-            <p class="last-updated">Last Updated: March 25, 2025</p>
+            <p class="last-updated">Last Updated: March 26, 2025</p>
             
             <div class="privacy-section">
                 <h2>Introduction</h2>
@@ -150,7 +151,7 @@
             </div>
 
             <div class="return-home">
-                <a href="index.html" class="btn btn-secondary">Return to Home</a>
+                <a href="index.html" class="btn btn-primary">Return to Home</a>
             </div>
         </div>
     </section>
@@ -158,18 +159,26 @@
     <!-- Footer -->
     <footer class="footer footer-simple">
         <div class="container">
-            <div class="footer-bottom">
-                <p class="copyright">
-                    &copy; 2025 HADIFY Studio. All rights reserved.
-                </p>
-                <p class="attribution">
-                    Inspired by the original 2048 game created by Gabriele Cirulli.
-                </p>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-box-small">2048</div>
+                    <span>NumberMerge2048</span>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html#home">Home</a>
+                    <a href="index.html#features">Features</a>
+                    <a href="index.html#how-to-play">How to Play</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2025 HADIFY Studio. All rights reserved.</p>
+                    <p class="attribution">Inspired by the original 2048 game created by Gabriele Cirulli.</p>
+                </div>
             </div>
         </div>
     </footer>
 
     <!-- JavaScript -->
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
