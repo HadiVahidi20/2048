@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Base styles and reset
+   Base styles and reset - Updated to match the app's color scheme
    ========================================================================== */
 
 :root {
@@ -39,7 +39,7 @@
     --color-neutral-100: #F5F5F5;
     --color-neutral-50: #FAFAFA;
     
-    /* Backgrounds */
+    /* Backgrounds - Match app colors */
     --color-background: #FFF8EF;
     --color-surface: #FFFFFF;
     --color-surface-variant: #F5EFDF;
@@ -49,7 +49,8 @@
     --color-text-secondary: #776E65;
     --color-text-tertiary: #9E9E9E;
     
-    /* Tile Colors - Same as the app */
+    /* Tile Colors - Exact matches from Color.kt */
+    --tile-0: #CDC1B4;
     --tile-2: #EEE4DA;
     --tile-4: #EDE0C8;
     --tile-8: #F2B179;
@@ -61,6 +62,15 @@
     --tile-512: #EDC850;
     --tile-1024: #EDC53F;
     --tile-2048: #EDC22E;
+    --tile-4096: #3C92CA;
+    --tile-8192: #2A6FEF;
+    --tile-16384: #633AD6;
+    --tile-32768: #954FE3;
+    --tile-65536: #D362F2;
+    
+    /* Text colors for tiles */
+    --tile-text-light: #776E65;
+    --tile-text-dark: #F9F6F2;
     
     /* Spacing */
     --spacing-xs: 0.25rem;
@@ -70,11 +80,12 @@
     --spacing-xl: 2rem;
     --spacing-xxl: 3rem;
     
-    /* Border Radii */
-    --radius-sm: 0.25rem;
-    --radius-md: 0.5rem;
-    --radius-lg: 1rem;
-    --radius-xl: 1.5rem;
+    /* Border Radii - Match GameShapes */
+    --radius-xs: 4px;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
     
     /* Shadows */
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -243,9 +254,30 @@ img {
     gap: 0.5rem;
 }
 
-.logo-img {
-    width: 40px;
-    height: 40px;
+.logo-box {
+    width: 48px;
+    height: 48px;
+    background-color: var(--tile-2048);
+    color: var(--tile-text-dark);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    font-size: 18px;
+}
+
+.logo-box-small {
+    width: 32px;
+    height: 32px;
+    background-color: var(--tile-2048);
+    color: var(--tile-text-dark);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
 }
 
 .logo-text {
@@ -380,13 +412,14 @@ img {
     justify-content: center;
 }
 
+/* Phone mockup - Enhanced to match actual game */
 .phone-mockup {
-    width: 280px;
-    height: 560px;
+    width: 320px;
+    height: 600px;
     background-color: #1a1a1a;
     border-radius: 40px;
     padding: 10px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     position: relative;
     overflow: hidden;
 }
@@ -399,31 +432,124 @@ img {
     overflow: hidden;
     position: relative;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    padding: 12px;
+}
+
+/* Game Header based on FixedGameMinimalHeader */
+.game-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    margin-bottom: 8px;
+}
+
+.game-header-left {
+    display: flex;
+    gap: 8px;
+}
+
+.game-header-middle {
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
+.game-header-right {
+    display: flex;
+    align-items: center;
+}
+
+.game-icon-button {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface-variant);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.game-icon-button:hover {
+    transform: scale(1.05);
+    background-color: var(--color-neutral-200);
+}
+
+.score-display {
+    text-align: center;
+}
+
+.score-text {
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--color-text-primary);
+}
+
+.best-score-text {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+}
+
+.coins-display {
+    background-color: var(--color-secondary-container, var(--color-neutral-200));
+    border-radius: var(--radius-md);
+    padding: 4px 10px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.coin-icon {
+    font-size: 14px;
+}
+
+.coin-count {
+    font-weight: bold;
+    color: var(--color-text-primary);
+}
+
+/* Power-Up Instruction */
+.power-up-instruction {
+    background-color: rgba(92, 107, 192, 0.15);
+    color: rgb(92, 107, 192);
+    border-radius: var(--radius-md);
+    padding: 8px 12px;
+    margin: 8px 0;
+    text-align: center;
+    font-size: 12px;
+    border: 1px solid rgba(92, 107, 192, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Game Board - Enhanced to match the app */
 .game-board {
-    width: 240px;
-    height: 240px;
+    width: 100%;
+    aspect-ratio: 1/1;
     background-color: rgba(0, 0, 0, 0.05);
-    border-radius: 8px;
-    padding: 10px;
+    border-radius: var(--radius-md);
+    padding: 8px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    gap: 10px;
+    gap: 8px;
+    margin: 8px 0;
 }
 
 .tile {
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: bold;
     font-size: 24px;
-    color: var(--color-text-secondary);
-    background-color: var(--tile-2);
     transition: all 0.3s ease;
     transform: scale(0);
     animation: tileAppear 0.2s ease forwards;
@@ -442,6 +568,191 @@ img {
     }
 }
 
+/* Power-ups container - Match EnhancedPowerUpButton */
+.powerups-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    gap: 8px;
+}
+
+.power-up-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 1;
+    flex: 1;
+}
+
+.power-up-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background-color: var(--color-secondary-soft);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.power-up-icon:hover {
+    transform: scale(1.05);
+}
+
+.power-up-count {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 22px;
+    height: 22px;
+    background-color: #FF5252;
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid white;
+}
+
+.power-up-label {
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--color-text-secondary);
+}
+
+/* Active power-up state */
+.power-up-button[data-active="true"] .power-up-icon {
+    background-color: var(--color-primary);
+    color: white;
+    transform: scale(1.1);
+}
+
+.power-up-button[data-active="true"] .power-up-label {
+    font-weight: bold;
+    color: var(--color-text-primary);
+}
+
+/* Powerup type-specific colors */
+.power-up-button[data-type="swap"] .power-up-icon {
+    background-color: #E3F2FD;
+    color: #5C6BC0;
+}
+
+.power-up-button[data-type="swap"][data-active="true"] .power-up-icon {
+    background-color: #5C6BC0;
+    color: white;
+}
+
+.power-up-button[data-type="undo"] .power-up-icon {
+    background-color: #E0F2F1;
+    color: #26A69A;
+}
+
+.power-up-button[data-type="undo"][data-active="true"] .power-up-icon {
+    background-color: #26A69A;
+    color: white;
+}
+
+.power-up-button[data-type="bomb"] .power-up-icon {
+    background-color: #FFEBEE;
+    color: #EF5350;
+}
+
+.power-up-button[data-type="bomb"][data-active="true"] .power-up-icon {
+    background-color: #EF5350;
+    color: white;
+}
+
+.power-up-button[data-type="freeze"] .power-up-icon {
+    background-color: #E3F2FD;
+    color: #42A5F5;
+}
+
+.power-up-button[data-type="freeze"][data-active="true"] .power-up-icon {
+    background-color: #42A5F5;
+    color: white;
+}
+
+/* Action buttons */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.action-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: var(--radius-md);
+    background-color: var(--color-primary-container, var(--color-primary-soft));
+    color: var(--color-text-secondary);
+    border: none;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.action-button:hover {
+    transform: scale(1.05);
+}
+
+.action-icon {
+    font-size: 16px;
+}
+
+.action-text {
+    font-weight: 600;
+}
+
+/* Game effects container */
+.game-effects-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1500;
+}
+
+/* Score increase animation */
+.score-increase {
+    position: absolute;
+    background-color: var(--color-tertiary);
+    color: white;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    animation: scoreFloat 1.5s forwards;
+}
+
+@keyframes scoreFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
+
 .floating-tiles-container {
     position: absolute;
     top: 0;
@@ -454,16 +765,15 @@ img {
 
 .floating-tile {
     position: absolute;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: bold;
     font-size: 16px;
-    color: var(--color-text-secondary);
     box-shadow: var(--shadow-sm);
     animation: float 15s linear infinite;
-    opacity: 0.3;
+    opacity: 0.2;
 }
 
 @keyframes float {
@@ -529,6 +839,16 @@ img {
     font-size: 2.5rem;
     color: var(--color-primary);
     margin-bottom: 1rem;
+}
+
+.powerup-feature-icon {
+    width: 60px;
+    height: 60px;
+    background-color: var(--color-primary-soft);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .feature-card h3 {
@@ -605,6 +925,140 @@ img {
 }
 
 /* ==========================================================================
+   Daily Challenges Section
+   ========================================================================== */
+
+.daily-challenges {
+    padding: 5rem 0;
+    background-color: var(--color-surface);
+}
+
+.challenges-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.challenge-levels {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.challenge-level {
+    background-color: var(--color-surface-variant);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all var(--transition-medium);
+    flex: 1;
+    min-width: 120px;
+    max-width: 180px;
+}
+
+.challenge-level.active {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.challenge-level.beginner.active {
+    background-color: var(--color-tertiary-soft);
+}
+
+.challenge-level.intermediate.active {
+    background-color: #FFF8E1;
+}
+
+.challenge-level.advanced.active {
+    background-color: var(--color-primary-soft);
+}
+
+.challenge-level.expert.active {
+    background-color: var(--color-error-soft);
+}
+
+.level-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.level-name {
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.challenge-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.challenge-card {
+    background-color: white;
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+.challenge-icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+
+.challenge-content {
+    flex-grow: 1;
+}
+
+.challenge-content h3 {
+    font-size: var(--font-size-lg);
+    margin-bottom: 0.5rem;
+    color: var(--color-text-primary);
+}
+
+.challenge-content p {
+    color: var(--color-text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.challenge-reward {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+}
+
+.coins {
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.challenge-status {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem;
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+}
+
+.challenge-status.new {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.challenge-status.completed {
+    background-color: var(--color-tertiary);
+    color: white;
+}
+
+/* ==========================================================================
    Download Section
    ========================================================================== */
 
@@ -639,55 +1093,6 @@ img {
 }
 
 /* ==========================================================================
-   Privacy Policy Section
-   ========================================================================== */
-
-.privacy-policy {
-    padding: 5rem 0;
-    background-color: var(--color-surface);
-}
-
-.policy-container {
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: white;
-    padding: 2rem;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-md);
-}
-
-.policy-section {
-    margin-bottom: 2rem;
-}
-
-.policy-section h3 {
-    font-size: var(--font-size-xl);
-    margin-bottom: 1rem;
-    color: var(--color-text-primary);
-}
-
-.policy-section p {
-    margin-bottom: 1rem;
-    color: var(--color-text-secondary);
-}
-
-.policy-section ul {
-    margin-bottom: 1rem;
-    margin-left: 1.5rem;
-}
-
-.policy-section li {
-    margin-bottom: 0.5rem;
-}
-
-.policy-last-updated {
-    font-style: italic;
-    color: var(--color-text-tertiary);
-    text-align: right;
-    margin-top: 2rem;
-}
-
-/* ==========================================================================
    Footer
    ========================================================================== */
 
@@ -708,11 +1113,6 @@ img {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-}
-
-.logo-img-small {
-    width: 32px;
-    height: 32px;
 }
 
 .footer-links {
@@ -739,6 +1139,74 @@ img {
 .attribution {
     margin-top: 0.5rem;
     font-style: italic;
+}
+
+/* ==========================================================================
+   Privacy Policy Page Styles
+   ========================================================================== */
+
+.privacy-page {
+    background-color: var(--color-background);
+}
+
+.privacy-content {
+    padding: 7rem 0 4rem;
+}
+
+.privacy-content h1 {
+    font-size: var(--font-size-xxxxl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.last-updated {
+    text-align: center;
+    color: var(--color-text-tertiary);
+    margin-bottom: 3rem;
+}
+
+.privacy-section {
+    background-color: white;
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-md);
+}
+
+.privacy-section h2 {
+    font-size: var(--font-size-xxl);
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.privacy-section h3 {
+    font-size: var(--font-size-lg);
+    margin: 1.5rem 0 0.5rem;
+}
+
+.privacy-section p {
+    margin-bottom: 1rem;
+}
+
+.privacy-section ul, .privacy-section ol {
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+
+.privacy-section li {
+    margin-bottom: 0.5rem;
+}
+
+.return-home {
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.footer-simple {
+    margin-top: 2rem;
+    padding: 2rem 0;
 }
 
 /* ==========================================================================
@@ -775,6 +1243,10 @@ img {
 @media (max-width: 768px) {
     html {
         font-size: 14px;
+    }
+
+    .navbar .container {
+        padding: 0.75rem var(--spacing-md);
     }
 
     .nav-menu {
@@ -818,6 +1290,11 @@ img {
         font-size: 3rem;
     }
 
+    .phone-mockup {
+        width: 280px;
+        height: 540px;
+    }
+
     .features-grid {
         grid-template-columns: 1fr;
     }
@@ -831,6 +1308,15 @@ img {
     .step-number {
         margin-right: 0;
         margin-bottom: 1rem;
+    }
+    
+    .challenge-levels {
+        flex-wrap: wrap;
+    }
+    
+    .challenge-level {
+        min-width: 100px;
+        padding: 0.75rem;
     }
 }
 
@@ -847,10 +1333,26 @@ img {
         width: 240px;
         height: 480px;
     }
+    
+    .game-header {
+        flex-wrap: wrap;
+    }
+    
+    .game-header-middle {
+        order: -1;
+        width: 100%;
+        margin-bottom: 8px;
+    }
 
     .game-board {
-        width: 200px;
-        height: 200px;
+        gap: 4px;
+        padding: 4px;
+    }
+    
+    .power-up-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
     }
 
     .hero {
@@ -865,5 +1367,9 @@ img {
         flex-direction: column;
         align-items: center;
         gap: 1rem;
+    }
+    
+    .privacy-section {
+        padding: 1.5rem;
     }
 }
