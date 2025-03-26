@@ -19,7 +19,7 @@
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <img src="logo-placeholder.png" alt="NumberMerge2048 Logo" class="logo-img">
+                <div class="logo-box">2048</div>
                 <span class="logo-text">NumberMerge2048</span>
             </div>
             <div class="menu-toggle">
@@ -28,6 +28,7 @@
             <ul class="nav-menu">
                 <li><a href="#features">Features</a></li>
                 <li><a href="#how-to-play">How to Play</a></li>
+                <li><a href="#daily-challenges">Daily Challenges</a></li>
                 <li><a href="#privacy-policy">Privacy Policy</a></li>
             </ul>
         </div>
@@ -39,6 +40,10 @@
             <div class="hero-content">
                 <h1 class="animated-title">NumberMerge2048</h1>
                 <p class="hero-subtitle">Merge tiles, unlock power-ups, and challenge yourself daily!</p>
+                <div class="coin-display">
+                    <span class="coin-icon">💰</span>
+                    <span class="coin-count">250</span>
+                </div>
                 <div class="cta-buttons">
                     <a href="#" class="btn btn-primary btn-download">
                         <i class="fab fa-google-play"></i>
@@ -49,8 +54,40 @@
             <div class="hero-image">
                 <div class="phone-mockup">
                     <div class="phone-screen">
+                        <div class="game-header">
+                            <div class="score-box">
+                                <div class="score-label">SCORE</div>
+                                <div class="score-value">0</div>
+                            </div>
+                            <div class="score-box">
+                                <div class="score-label">BEST</div>
+                                <div class="score-value">2048</div>
+                            </div>
+                        </div>
                         <div class="game-board">
                             <!-- Game board tiles added via JavaScript -->
+                        </div>
+                        <div class="powerups-container">
+                            <div class="powerup" data-type="swap">
+                                <div class="powerup-icon">🔄</div>
+                                <div class="powerup-count">3</div>
+                                <div class="powerup-label">Swap</div>
+                            </div>
+                            <div class="powerup" data-type="undo">
+                                <div class="powerup-icon">⏪</div>
+                                <div class="powerup-count">2</div>
+                                <div class="powerup-label">Undo</div>
+                            </div>
+                            <div class="powerup" data-type="bomb">
+                                <div class="powerup-icon">💣</div>
+                                <div class="powerup-count">1</div>
+                                <div class="powerup-label">Bomb</div>
+                            </div>
+                            <div class="powerup" data-type="freeze">
+                                <div class="powerup-icon">❄️</div>
+                                <div class="powerup-count">1</div>
+                                <div class="powerup-label">Freeze</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -72,25 +109,46 @@
                     <p>Merge matching numbers to create larger values. Can you reach the 2048 tile and beyond?</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
+                    <div class="feature-icon powerup-feature-icon">
+                        <span>🔄</span>
                     </div>
-                    <h3>Power-Ups</h3>
-                    <p>Use special abilities like Swap, Undo, Bomb, and Freeze to overcome challenging situations.</p>
+                    <h3>Swap Power-Up</h3>
+                    <p>Swap any two tiles to create strategic merging opportunities and overcome tricky situations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon powerup-feature-icon">
+                        <span>⏪</span>
+                    </div>
+                    <h3>Undo Power-Up</h3>
+                    <p>Made a mistake? Use the Undo power-up to revert your last move and try a different strategy.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon powerup-feature-icon">
+                        <span>💣</span>
+                    </div>
+                    <h3>Bomb Power-Up</h3>
+                    <p>Remove any tile from the board when you're stuck or need to create space for better moves.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon powerup-feature-icon">
+                        <span>❄️</span>
+                    </div>
+                    <h3>Freeze Power-Up</h3>
+                    <p>Freeze a tile to prevent it from merging, allowing you to save it for a better strategic moment.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-trophy"></i>
                     </div>
                     <h3>Daily Challenges</h3>
-                    <p>Test your skills with daily challenges across different difficulty levels and earn rewards.</p>
+                    <p>Test your skills with daily challenges across Beginner, Intermediate, Advanced, and Expert levels.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-expand"></i>
                     </div>
                     <h3>Multiple Board Sizes</h3>
-                    <p>Choose between 4×4, 5×5, or 6×6 boards for different levels of challenge.</p>
+                    <p>Choose between 4×4, 5×5, or 6×6 boards for different levels of challenge and strategy.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -119,28 +177,93 @@
                     <div class="step-number">1</div>
                     <div class="step-content">
                         <h3>Swipe to Move</h3>
-                        <p>Swipe up, down, left, or right to move all tiles in that direction.</p>
+                        <p>Swipe up, down, left, or right to move all tiles in that direction. New tiles appear with each move.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
                     <div class="step-content">
                         <h3>Merge Same Numbers</h3>
-                        <p>When two tiles with the same number touch, they merge into one tile with double the value!</p>
+                        <p>When two tiles with the same number touch, they merge into one tile with double the value! Create a chain of merges for higher scores.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <h3>Use Power-Ups</h3>
-                        <p>Strategically use power-ups to overcome difficult situations and reach higher scores.</p>
+                        <p>Strategically use Swap, Undo, Bomb, and Freeze power-ups to overcome difficult situations. Purchase more with coins you earn.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">4</div>
                     <div class="step-content">
                         <h3>Complete Challenges</h3>
-                        <p>Take on daily challenges to earn coins and test your skills across different game modes.</p>
+                        <p>Take on daily challenges to earn coins and test your skills across different game modes with unique objectives.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Daily Challenges Section -->
+    <section class="daily-challenges" id="daily-challenges">
+        <div class="container">
+            <h2 class="section-title">Daily Challenges</h2>
+            <div class="challenges-container">
+                <div class="challenge-levels">
+                    <div class="challenge-level beginner active">
+                        <div class="level-icon">🔰</div>
+                        <div class="level-name">Beginner</div>
+                    </div>
+                    <div class="challenge-level intermediate">
+                        <div class="level-icon">⭐</div>
+                        <div class="level-name">Intermediate</div>
+                    </div>
+                    <div class="challenge-level advanced">
+                        <div class="level-icon">🔥</div>
+                        <div class="level-name">Advanced</div>
+                    </div>
+                    <div class="challenge-level expert">
+                        <div class="level-icon">👑</div>
+                        <div class="level-name">Expert</div>
+                    </div>
+                </div>
+                
+                <div class="challenge-cards-container">
+                    <div class="challenge-card">
+                        <div class="challenge-icon">🎯</div>
+                        <div class="challenge-content">
+                            <h3>Score Challenge</h3>
+                            <p>Reach a target score of 2048 within 50 moves</p>
+                            <div class="challenge-reward">
+                                <span>Reward: </span>
+                                <span class="coins">50 💰</span>
+                            </div>
+                        </div>
+                        <div class="challenge-status new">NEW</div>
+                    </div>
+                    <div class="challenge-card">
+                        <div class="challenge-icon">⏱️</div>
+                        <div class="challenge-content">
+                            <h3>Time Challenge</h3>
+                            <p>Create a 512 tile within 3 minutes</p>
+                            <div class="challenge-reward">
+                                <span>Reward: </span>
+                                <span class="coins">75 💰</span>
+                            </div>
+                        </div>
+                        <div class="challenge-status completed">✓</div>
+                    </div>
+                    <div class="challenge-card">
+                        <div class="challenge-icon">🧩</div>
+                        <div class="challenge-content">
+                            <h3>Tile Challenge</h3>
+                            <p>Create a 1024 tile with limited moves</p>
+                            <div class="challenge-reward">
+                                <span>Reward: </span>
+                                <span class="coins">100 💰</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
