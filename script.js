@@ -49,20 +49,20 @@ const tileTextColors = {
     0: 'transparent',
     2: '#776E65',
     4: '#776E65',
-    8: '#FFFFFF',
-    16: '#FFFFFF',
-    32: '#FFFFFF',
-    64: '#FFFFFF',
-    128: '#FFFFFF',
-    256: '#FFFFFF',
-    512: '#FFFFFF',
-    1024: '#FFFFFF',
-    2048: '#FFFFFF',
-    4096: '#FFFFFF',
-    8192: '#FFFFFF',
-    16384: '#FFFFFF',
-    32768: '#FFFFFF',
-    65536: '#FFFFFF'
+    8: '#F9F6F2', // Ensure high contrast for the 8 tile with bold text
+    16: '#F9F6F2',
+    32: '#F9F6F2',
+    64: '#F9F6F2',
+    128: '#F9F6F2',
+    256: '#F9F6F2',
+    512: '#F9F6F2',
+    1024: '#F9F6F2',
+    2048: '#F9F6F2',
+    4096: '#F9F6F2',
+    8192: '#F9F6F2',
+    16384: '#F9F6F2',
+    32768: '#F9F6F2',
+    65536: '#F9F6F2'
 };
 
 // Power-up instruction messages
@@ -129,6 +129,13 @@ function createGameBoard() {
             tile.textContent = value;
             tile.style.backgroundColor = tileColors[value];
             tile.style.color = tileTextColors[value];
+            
+            // Add extra font weight for "8" tiles to ensure visibility
+            if (value === 8) {
+                tile.style.fontWeight = '900'; // Extra bold
+                tile.style.textShadow = '0px 1px 2px rgba(0,0,0,0.3)'; // Stronger shadow
+            }
+            
             tile.style.setProperty('--delay', index);
         } else {
             tile.style.backgroundColor = tileColors[0];
