@@ -375,13 +375,14 @@ img {
 .animated-title {
     font-size: 4rem;
     font-weight: 800;
+      z-index: 10;
     margin-bottom: 1rem;
     background: linear-gradient(45deg, var(--color-primary), var(--color-primary-dark));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     animation: titleGradient 5s infinite alternate;
-   z-index:10;
+   
 }
 .title1{
 z-index: 10;
