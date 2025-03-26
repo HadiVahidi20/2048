@@ -3,39 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NumberMerge2048 - Combine tiles, reach 2048!</title>
-    <meta name="description" content="NumberMerge2048 - A fun and addictive puzzle game where you merge tiles to reach 2048 and beyond with exciting power-ups and daily challenges!">
-    
-    <!-- Favicon placeholder - replace with actual favicon -->
-    <link rel="icon" type="image/png" href="img/favicon.png">
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/style.css">
-    
-    <!-- Font import -->
+    <title>NumberMerge2048 - Merge Tiles and Reach 2048!</title>
+    <meta name="description" content="NumberMerge2048 - The exciting puzzle game where you merge numbers, use power-ups, and solve daily challenges to reach 2048 and beyond!">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico">
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <span class="logo-text">2048</span>
-                <span class="logo-subtext">NumberMerge</span>
+                <img src="logo-placeholder.png" alt="NumberMerge2048 Logo" class="logo-img">
+                <span class="logo-text">NumberMerge2048</span>
             </div>
-            <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#how-to-play">How to Play</a>
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="#contact">Contact</a>
+            <div class="menu-toggle">
+                <div class="hamburger"></div>
             </div>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <ul class="nav-menu">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-to-play">How to Play</a></li>
+                <li><a href="#privacy-policy">Privacy Policy</a></li>
+            </ul>
         </div>
     </nav>
 
@@ -43,27 +37,26 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1>NumberMerge<span class="highlight">2048</span></h1>
-                <p class="tagline">Combine tiles, unlock power-ups, reach 2048 and beyond!</p>
+                <h1 class="animated-title">NumberMerge2048</h1>
+                <p class="hero-subtitle">Merge tiles, unlock power-ups, and challenge yourself daily!</p>
                 <div class="cta-buttons">
-                    <a href="#" class="btn btn-primary">
-                        <img src="img/google-play.svg" alt="Google Play" class="btn-icon">
-                        Download on Google Play
+                    <a href="#" class="btn btn-primary btn-download">
+                        <i class="fab fa-google-play"></i>
+                        Get it on Google Play
                     </a>
                 </div>
             </div>
             <div class="hero-image">
-                <div class="phone-wrapper">
-                    <img src="img/phone-frame.png" alt="App Screenshot" class="phone-frame">
-                    <div class="screen-content">
-                        <!-- Game board visualizer - powered by JS -->
-                        <div class="game-board" id="demo-board"></div>
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="game-board">
+                            <!-- Game board tiles added via JavaScript -->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Floating background tiles - animated by JS -->
-        <div class="floating-tiles" id="floating-tiles"></div>
+        <div class="floating-tiles-container"></div>
     </section>
 
     <!-- Features Section -->
@@ -72,34 +65,46 @@
             <h2 class="section-title">Game Features</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🎮</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
                     <h3>Classic 2048 Gameplay</h3>
-                    <p>Enjoy the addictive tile-merging mechanics with a fresh and modern design.</p>
+                    <p>Merge matching numbers to create larger values. Can you reach the 2048 tile and beyond?</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🔄</div>
-                    <h3>Special Power-Ups</h3>
-                    <p>Use Swap, Undo, Bomb, and Freeze power-ups to enhance your gameplay strategy.</p>
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Power-Ups</h3>
+                    <p>Use special abilities like Swap, Undo, Bomb, and Freeze to overcome challenging situations.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
                     <h3>Daily Challenges</h3>
-                    <p>Take on new challenges every day with different difficulty levels and rewards.</p>
+                    <p>Test your skills with daily challenges across different difficulty levels and earn rewards.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🎨</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-expand"></i>
+                    </div>
                     <h3>Multiple Board Sizes</h3>
-                    <p>Choose between 4×4, 5×5, and 6×6 board sizes for different gameplay experiences.</p>
+                    <p>Choose between 4×4, 5×5, or 6×6 boards for different levels of challenge.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🌙</div>
-                    <h3>Dark & Light Themes</h3>
-                    <p>Play comfortably in any lighting condition with theme options.</p>
+                    <div class="feature-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3>In-Game Economy</h3>
+                    <p>Earn coins as you play to purchase power-ups and enhance your gameplay experience.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🎵</div>
-                    <h3>Immersive Audio</h3>
-                    <p>Enjoy background music and satisfying sound effects as you play.</p>
+                    <div class="feature-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3>Light & Dark Themes</h3>
+                    <p>Choose between light and dark themes for comfortable gameplay day or night.</p>
                 </div>
             </div>
         </div>
@@ -109,54 +114,34 @@
     <section class="how-to-play" id="how-to-play">
         <div class="container">
             <h2 class="section-title">How to Play</h2>
-            <div class="instruction-cards">
-                <div class="instruction-card">
-                    <div class="instruction-number">1</div>
-                    <h3>Swipe to Move</h3>
-                    <p>Swipe up, down, left, or right to move all tiles on the board in that direction.</p>
-                    <div class="instruction-visual swipe-visual"></div>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Swipe to Move</h3>
+                        <p>Swipe up, down, left, or right to move all tiles in that direction.</p>
+                    </div>
                 </div>
-                <div class="instruction-card">
-                    <div class="instruction-number">2</div>
-                    <h3>Merge Same Numbers</h3>
-                    <p>When two tiles with the same number touch, they merge into one tile with doubled value.</p>
-                    <div class="instruction-visual merge-visual"></div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Merge Same Numbers</h3>
+                        <p>When two tiles with the same number touch, they merge into one tile with double the value!</p>
+                    </div>
                 </div>
-                <div class="instruction-card">
-                    <div class="instruction-number">3</div>
-                    <h3>Use Power-Ups</h3>
-                    <p>Collect and use special power-ups to overcome challenging situations.</p>
-                    <div class="instruction-visual powerup-visual"></div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Use Power-Ups</h3>
+                        <p>Strategically use power-ups to overcome difficult situations and reach higher scores.</p>
+                    </div>
                 </div>
-                <div class="instruction-card">
-                    <div class="instruction-number">4</div>
-                    <h3>Reach 2048</h3>
-                    <p>Create a tile with the number 2048 to win! Can you go even further?</p>
-                    <div class="instruction-visual goal-visual"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Screenshots Section -->
-    <section class="screenshots">
-        <div class="container">
-            <h2 class="section-title">Game Screenshots</h2>
-            <div class="screenshots-slider">
-                <div class="screenshot-container">
-                    <img src="img/screenshot-1.png" alt="Game Screenshot" class="screenshot">
-                </div>
-                <div class="screenshot-container">
-                    <img src="img/screenshot-2.png" alt="Daily Challenge Screenshot" class="screenshot">
-                </div>
-                <div class="screenshot-container">
-                    <img src="img/screenshot-3.png" alt="Store Screenshot" class="screenshot">
-                </div>
-                <!-- Navigation dots -->
-                <div class="slider-nav">
-                    <span class="slider-dot active"></span>
-                    <span class="slider-dot"></span>
-                    <span class="slider-dot"></span>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Complete Challenges</h3>
+                        <p>Take on daily challenges to earn coins and test your skills across different game modes.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -165,53 +150,107 @@
     <!-- Download Section -->
     <section class="download">
         <div class="container">
-            <h2 class="section-title">Ready to Play?</h2>
-            <p class="download-text">Download NumberMerge2048 now and start merging your way to victory!</p>
-            <a href="#" class="btn btn-primary btn-large">
-                <img src="img/google-play.svg" alt="Google Play" class="btn-icon">
-                Get it on Google Play
+            <h2 class="section-title">Get NumberMerge2048 Today</h2>
+            <p class="download-text">Join millions of players around the world and start your 2048 journey!</p>
+            <a href="#" class="btn btn-primary btn-large btn-download">
+                <i class="fab fa-google-play"></i>
+                Download Now
             </a>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer" id="contact">
+    <!-- Privacy Policy Section -->
+    <section class="privacy-policy" id="privacy-policy">
         <div class="container">
-            <div class="footer-columns">
-                <div class="footer-column">
-                    <div class="logo footer-logo">
-                        <span class="logo-text">2048</span>
-                        <span class="logo-subtext">NumberMerge</span>
-                    </div>
-                    <p>A fresh take on the classic 2048 game with exciting new features and challenges.</p>
+            <h2 class="section-title">Privacy Policy</h2>
+            <div class="policy-container">
+                <div class="policy-section">
+                    <h3>Introduction</h3>
+                    <p>This Privacy Policy explains how we collect, use, and share information when you use our NumberMerge2048 mobile application ("App").</p>
+                    <p>We respect your privacy and are committed to protecting your personal information. By using the App, you consent to this Privacy Policy.</p>
                 </div>
-                <div class="footer-column">
-                    <h3>Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#how-to-play">How to Play</a></li>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
+
+                <div class="policy-section">
+                    <h3>Information We Collect</h3>
+                    <p>We collect minimal information necessary to provide you with the App:</p>
+                    <ul>
+                        <li><strong>Game Progress Information:</strong> We store your game progress, scores, and settings locally on your device to enable the "continue" functionality.</li>
+                        <li><strong>Device Information:</strong> Basic information about your device (such as device type, operating system version) may be collected for app functionality and debugging purposes.</li>
+                        <li><strong>Ad-related Data:</strong> Our advertising partners may collect certain information to serve relevant ads. Please refer to their privacy policies for more details.</li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h3>Contact</h3>
-                    <p>Questions or feedback? Reach out to us:</p>
-                    <a href="mailto:hadifyvahidi20@gmail.com" class="contact-link">hadifyvahidi20@gmail.com</a>
+
+                <div class="policy-section">
+                    <h3>Advertising</h3>
+                    <p>The App is ad-supported. We use the following ad providers:</p>
+                    <ul>
+                        <li><strong>Google AdMob:</strong> <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a></li>
+                        <li><strong>Unity Ads:</strong> <a href="https://unity.com/legal/privacy-policy" target="_blank">Privacy Policy</a></li>
+                    </ul>
+                    <p>These services may collect information used to serve personalized ads. This may include identifiers for your device and your interactions with ads.</p>
                 </div>
+
+                <div class="policy-section">
+                    <h3>Data Storage and Security</h3>
+                    <p>Your game data is primarily stored locally on your device. We implement reasonable security measures to protect any information we collect.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3>Children's Privacy</h3>
+                    <p>Our App is not directed to children under the age of 13, and we do not knowingly collect personal information from children under 13.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3>Your Rights</h3>
+                    <p>Depending on your location, you may have rights regarding your personal information, including:</p>
+                    <ul>
+                        <li>Access to your data</li>
+                        <li>Correction of inaccurate data</li>
+                        <li>Deletion of your data</li>
+                        <li>Restriction of processing</li>
+                        <li>Data portability</li>
+                    </ul>
+                    <p>To exercise these rights, please contact us using the information provided below.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3>Changes to This Privacy Policy</h3>
+                    <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3>Contact Us</h3>
+                    <p>If you have any questions about this Privacy Policy, please contact us at:</p>
+                    <p>Email: support@numbermerge2048.com</p>
+                </div>
+
+                <p class="policy-last-updated">Last Updated: March 26, 2025</p>
             </div>
-            <div class="footer-bottom">
-                <p class="copyright">
-                    &copy; 2025 HADIFY Studio. All rights reserved.
-                </p>
-                <p class="attribution">
-                    Inspired by the original 2048 game created by Gabriele Cirulli.
-                </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo-placeholder.png" alt="NumberMerge2048 Logo" class="logo-img-small">
+                    <span>NumberMerge2048</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#features">Features</a>
+                    <a href="#how-to-play">How to Play</a>
+                    <a href="#privacy-policy">Privacy Policy</a>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2025 HADIFY Studio. All rights reserved.</p>
+                    <p class="attribution">Inspired by the original 2048 game created by Gabriele Cirulli.</p>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
