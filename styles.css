@@ -554,6 +554,7 @@ img {
     transform: scale(0);
     animation: tileAppear 0.2s ease forwards;
     animation-delay: calc(var(--delay) * 0.1s);
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2); /* Add subtle text shadow for better visibility */
 }
 
 @keyframes tileAppear {
